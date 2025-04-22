@@ -71,5 +71,6 @@ Este driver puede integrarse fácilmente en proyectos con bucles de polling, uti
 
 ## 👨‍💻 Autor
 
-Alejo García Mata 
+Alejo García Mata
+
 Proyecto desarrollado para la materia *Protocolos de Comunicación en Sistemas Embebidos* (Posgrado en Sistemas Embebidos)
