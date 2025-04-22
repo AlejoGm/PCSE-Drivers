@@ -22,5 +22,7 @@ bool MAX7219_Write(uint8_t reg, uint8_t data)
 
     HAL_GPIO_WritePin(port->CS_GPIO_PORT, port->CS_GPIO_PIN, GPIO_PIN_SET);
 
+    HAL_Delay(1);
+
     return ret;
 }
