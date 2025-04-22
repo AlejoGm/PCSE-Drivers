@@ -72,5 +72,4 @@ Este driver puede integrarse fácilmente en proyectos con bucles de polling, uti
 ## 👨‍💻 Autor
 
 Alejo García Mata
-Firmware Developer – Sensify  
 Proyecto desarrollado para la materia *Protocolos de Comunicación en Sistemas Embebidos* (Posgrado en Sistemas Embebidos)
