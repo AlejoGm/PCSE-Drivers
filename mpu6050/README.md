@@ -73,12 +73,10 @@ MPU6050_GetGyroDPS(&gx, &gy, &gz);
 
 Puede integrarse fácilmente en proyectos embebidos periódicos o RTOS donde se requiera adquisición de datos inercial.
 
-## 📄 Licencia
-
-MIT License.
 
 ## 👨‍💻 Autor
 
 Alejo García  
-Firmware Developer – Sensify  
+
+ 
 Proyecto desarrollado para la materia *Protocolos de Comunicación en Sistemas Embebidos* (Posgrado en Sistemas Embebidos)
