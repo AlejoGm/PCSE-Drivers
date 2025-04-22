@@ -67,14 +67,10 @@ LedMatrix_Refresh();
 
 ## 🧪 Ejemplo de Integración
 
-Este driver puede integrarse fácilmente en proyectos con RTOS o bucles de polling, utilizando `LedMatrix_Refresh()` de manera periódica o tras cada cambio.
-
-## 📄 Licencia
-
-MIT License.
+Este driver puede integrarse fácilmente en proyectos con bucles de polling, utilizando `LedMatrix_Refresh()` de manera periódica o tras cada cambio.
 
 ## 👨‍💻 Autor
 
-Alejo García  
+Alejo García Mata
 Firmware Developer – Sensify  
 Proyecto desarrollado para la materia *Protocolos de Comunicación en Sistemas Embebidos* (Posgrado en Sistemas Embebidos)
