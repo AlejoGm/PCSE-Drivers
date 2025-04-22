@@ -29,16 +29,21 @@
 #define COUNTS_PER_DPS_1000   32.8f
 #define COUNTS_PER_DPS_2000   16.4f
 
+/**
+ * @brief Estructura que contiene los datos brutos del sensor MPU6050.
+ */
 typedef struct {
-    int16_t accel_x;
-    int16_t accel_y;
-    int16_t accel_z;
-    int16_t temp_raw;
-    int16_t gyro_x;
-    int16_t gyro_y;
-    int16_t gyro_z;
+    int16_t accel_x; /**< Aceleración eje X */
+    int16_t accel_y; /**< Aceleración eje Y */
+    int16_t accel_z; /**< Aceleración eje Z */
+    int16_t temp_raw; /**< Temperatura sin convertir */
+    int16_t gyro_x; /**< Velocidad angular eje X */
+    int16_t gyro_y; /**< Velocidad angular eje Y */
+    int16_t gyro_z; /**< Velocidad angular eje Z */
 } mpu6050_data_t;
 
+
+/** @brief Opciones de fuente de reloj. */
 typedef enum {
     MPU6050_CLK_INTERNAL = 0x00,
     MPU6050_CLK_PLL_XGYRO = 0x01,
@@ -48,6 +53,7 @@ typedef enum {
     MPU6050_CLK_PLL_EXT19M = 0x05
 } mpu6050_clock_source_t;
 
+/** @brief Configuraciones posibles para el filtro DLPF. */
 typedef enum {
     MPU6050_DLPF_260HZ = 0x00,
     MPU6050_DLPF_184HZ = 0x01,
@@ -58,6 +64,7 @@ typedef enum {
     MPU6050_DLPF_5HZ   = 0x06
 } mpu6050_dlpf_t;
 
+/** @brief Rangos configurables del giroscopio. */
 typedef enum {
     MPU6050_GYRO_250DPS  = 0x00,
     MPU6050_GYRO_500DPS  = 0x08,
@@ -65,6 +72,7 @@ typedef enum {
     MPU6050_GYRO_2000DPS = 0x18
 } mpu6050_gyro_range_t;
 
+/** @brief Rangos configurables del acelerómetro. */
 typedef enum {
     MPU6050_ACCEL_2G  = 0x00,
     MPU6050_ACCEL_4G  = 0x08,
@@ -72,25 +80,44 @@ typedef enum {
     MPU6050_ACCEL_16G = 0x18
 } mpu6050_accel_range_t;
 
+/**
+ * @brief Configuración completa del sensor MPU6050.
+ */
 typedef struct {
-	mpu6050_port_config_t port;
-    mpu6050_clock_source_t clk_source;
-    uint8_t sample_rate_div;
-    mpu6050_dlpf_t dlpf_cfg;
-    mpu6050_gyro_range_t gyro_range;
-    mpu6050_accel_range_t accel_range;
-    float accel_factor;
-    float gyro_factor;
+	mpu6050_port_config_t port; /**< Configuración del puerto I2C */
+    mpu6050_clock_source_t clk_source; /**< Fuente de reloj */
+    uint8_t sample_rate_div; /**< Divisor de tasa de muestreo */
+    mpu6050_dlpf_t dlpf_cfg; /**< Configuración del filtro DLPF */
+    mpu6050_gyro_range_t gyro_range; /**< Rango del giroscopio */
+    mpu6050_accel_range_t accel_range; /**< Rango del acelerómetro */
+    float accel_factor; /**< Factor de conversión a G */
+    float gyro_factor; /**< Factor de conversión a °/s */
 } mpu6050_settings_t;
 
-bool mpu6050_Init(mpu6050_settings_t *settings);
+
+
+/** @brief Lee valores del acelerómetro. */
 bool MPU6050_ReadAccel(void);
+
+/** @brief Lee valores del giroscopio. */
 bool MPU6050_ReadGyro(void);
+
+/** @brief Lee la temperatura cruda del sensor. */
 bool MPU6050_ReadTemp(void);
+
+/** @brief Lee acelerómetro, giroscopio y temperatura. */
 bool MPU6050_ReadAll(void);
+
+/** @brief Retorna un puntero constante a los últimos datos leídos. */
 const mpu6050_data_t* MPU6050_GetData(void);
+
+/** @brief Convierte la temperatura cruda a grados Celsius. */
 float MPU6050_ConvertTemp(int16_t raw);
+
+/** @brief Devuelve aceleración en Gs. */
 void MPU6050_GetAccelG(float *x, float *y, float *z);
+
+/** @brief Devuelve velocidad angular en °/s. */
 void MPU6050_GetGyroDPS(float *x, float *y, float *z);
 
 
