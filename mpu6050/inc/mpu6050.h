@@ -94,7 +94,21 @@ typedef struct {
     float gyro_factor; /**< Factor de conversión a °/s */
 } mpu6050_settings_t;
 
-
+/**
+ * @brief Inicializa el sensor MPU6050 con la configuración especificada.
+ *
+ * Esta función aplica todos los parámetros de configuración definidos en
+ * la estructura `mpu6050_settings_t`, como el rango del acelerómetro, el
+ * rango del giroscopio, la frecuencia de muestreo y el filtro DLPF.
+ *
+ * También se encarga de inicializar el puerto I2C y preparar el sensor para
+ * lecturas posteriores. Es el primer paso obligatorio antes de utilizar el
+ * sensor.
+ *
+ * @param settings Puntero a la estructura de configuración completa.
+ * @return true si la inicialización fue exitosa, false en caso contrario.
+ */
+bool mpu6050_Init(mpu6050_settings_t *settings);
 
 /** @brief Lee valores del acelerómetro. */
 bool MPU6050_ReadAccel(void);
